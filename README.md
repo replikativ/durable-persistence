@@ -22,6 +22,12 @@ for DataScript would be nice :).
 
 ## Usage
 
+The easiest is to check out the project and hack it itself, but if you just want
+to use it, you can also add this dependency:
+[![Clojars Project](http://clojars.org/io.replikativ/durable-persistence/latest-version.svg)](http://clojars.org/io.replikativ/durable-persistence)
+
+
+
 Here is a small benchmark and usage example:
 
 ~~~clojure
