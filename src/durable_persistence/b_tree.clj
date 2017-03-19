@@ -10,6 +10,12 @@
   (:import [java.util Arrays Collections]))
 
 
+;; this namespace explores the hitchhiker b+-tree implementation https://github.com/datacrypt-project/hitchhiker-tree
+
+;; The biggest change is that we replace all newly created nodes with a
+;; crypto-hashed immutable reference in the store instead of postponing the IO.
+;; This is not really ideal so far. To support cljs with our stack we have to
+;; further wrap all functions which might load index fragments with go-blocks.
 
 
 
