@@ -134,7 +134,7 @@ space is still necessary.
 
 ## License
 
-Copyright © 2016 Christian Weilbach
+Copyright © 2016-2017 Christian Weilbach, 2016 David Greenberg
 
 Distributed under the Eclipse Public License either version 1.0 or (at
 your option) any later version.

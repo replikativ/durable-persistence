@@ -6,25 +6,9 @@
             [hasch.core :refer [uuid]]
             [clojure.core.match :refer [match]]
             [clojure.set :as set]
-            [clojure.core.cache :as cache]))
+            [durable-persistence.refs :refer :all]))
 
 ;; thankfully adapted from https://github.com/clojure-cookbook/clojure-cookbook/blob/master/02_composite-data/2-27_and_2-28_custom-data-structures/2-27_red-black-trees-part-i.asciidoc
-
-
-(def C (atom (cache/lru-cache-factory {} :threshold 2048)))
-
-(defrecord Ref [id])
-
-(defn create-ref [store node]
-  (go
-   (when node
-     (if (:id node) ;; TODO ??? (= (type node) async_tree_experiment.core.Ref)
-       node
-       (let [id (uuid node)]
-         (when-not (<! (k/exists? store id))
-           (swap! C assoc id node)
-           (<! (k/assoc-in store [id] node)))
-         (map->Ref {:id id}))))))
 
 
 (defn load-tree-fragment [store tree depth]
@@ -141,8 +125,8 @@
 (comment
 
   (def store (<!! #_(new-mem-store)
-                  (new-fs-store "/tmp/async-tree-experiment"
-                                :read-handlers (atom {'async_tree_experiment.core.Ref map->Ref}))))
+                  (new-fs-store "/tmp/async-tree-experiment-rb"
+                                :read-handlers (atom {'durable_persistence.refs.Ref map->Ref}))))
   (count @assocs)
 
   (def perf-log (atom []))

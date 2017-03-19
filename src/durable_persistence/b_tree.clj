@@ -200,7 +200,6 @@
    forward over the tree. Does lg(n) backtracking sometimes."
   [store path start-key]
   (let [start-node (peek path)]
-    (if-not (data-node? start-node) (prn "SN" start-node))
     (assert (data-node? start-node))
     (let [first-elements (-> start-node
                              :children ; Get the indices of it
@@ -243,7 +242,6 @@
 (defn lookup-fwd-iter
   [store tree key]
   (let [path (lookup-path store tree key)]
-    (prn "p" path)
     (when path
       (forward-iterator store path key))))
 
