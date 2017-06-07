@@ -1,5 +1,10 @@
 # durable-persistence
 
+*Note*: We have ported
+the [hitchhiker-tree](https://github.com/datacrypt-project/hitchhiker-tree) as
+it satisfies our durable persistence needs very well. The repository is here for
+historical reasons.
+
 This repository is for exploration of persistent datastructures on a durable
 medium. The durable medium is abstracted away by a minimalistic
 [key-value protocol](https://github.com/replikativ/konserve) providing atomic
